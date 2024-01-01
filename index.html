@@ -9,12 +9,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Alexandria&display=swap" rel="stylesheet">
   
   
-  
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa+Ink&display=swap" rel="stylesheet">
-  
-  
   <title>التاريخ والساعة بالمغرب</title>
   <style>
     body {
@@ -39,7 +33,7 @@
     }
 
     #date {
-      font-size: 15px;
+      font-size: 20px;
       font-weight: bold;
       margin-top: 10px;
     }
@@ -100,19 +94,19 @@
     }
 
     #time {
-      font-size: 30px;
+      font-size: 48px;
       font-weight: bold;
       margin-top: 20px;
     }
 
     #speak-button {
       font-family: 'Alexandria', sans-serif;
-      font-size: 19px;
+      font-size: 24px;
       font-weight: bold;
       margin-top: 20px;
       padding: 10px 20px;
       border: 1px solid #ccc;
-      border-radius: 20px;
+      border-radius: 5px;
       cursor: pointer;
       background: red;
       color: white;
@@ -126,12 +120,7 @@
 </head>
 <body>
 
-            <h2 style="font-family: 'Aref Ruqaa Ink', serif;font-size: 30px;margin: 5px;">الساعة الناطقة</h2>
-
 <div class="container" dir="rtl">
-  
-
-  
   <div id="date"></div>
 
   <div class="clockbox">
@@ -155,26 +144,22 @@
   </div>
 
   <div id="time"></div>
-  
   <button id="speak-button">استمع للتوقيت</button>
-  
 </div>
   
-
+  
   
   
    <!-- Image Slider -->
     <div id="image-slider">
-      <img id="image-1" style="width: 300px;border-radius: 20px" src="https://hindgeto.github.io/app2/4.png" alt="Image 1">
-      <img id="image-2" style="width: 300px;border-radius: 20px" src="https://hindgeto.github.io/app2/5.png" alt="Image 2">
-      <img id="image-3" style="width: 300px;border-radius: 20px" src="https://hindgeto.github.io/app2/6.png" alt="Image 3">
-      <img id="image-4" style="width: 300px;border-radius: 20px" src="https://hindgeto.github.io/app2/1.png" alt="Image 4">
-      <img id="image-5" style="width: 300px;border-radius: 20px" src="https://hindgeto.github.io/app2/2.png" alt="Image 5">
-      <img id="image-6" style="width: 300px;border-radius: 20px" src="https://hindgeto.github.io/app2/3.png" alt="Image 6">
+      <img id="image-1" src="https://www.kasandbox.org/programming-images/avatars/spunky-sam.png" alt="Image 1">
+      <img id="image-2" src="https://www.kasandbox.org/programming-images/avatars/purple-pi.png" alt="Image 2">
+      <img id="image-3" src="https://www.kasandbox.org/programming-images/avatars/primosaur-ultimate.png" alt="Image 3">
+      <img id="image-4" src="https://www.kasandbox.org/programming-images/avatars/old-spice-man.png" alt="Image 4">
     </div>
   
   
-
+  
   
   <script>
 const today = new Date();
@@ -182,9 +167,9 @@ const gregorianDate = today.toLocaleDateString("ar-MA", { weekday: "long", day: 
 const hijriDate = today.toLocaleDateString("ar-MA-u-ca-islamic", { day: "numeric", month: "long", year: "numeric" });
 const hijriYear = today.toLocaleDateString("ar-MA-u-ca-islamic", { year: "numeric" });
 const time = today.toLocaleTimeString("ar-MA");
-const period = (today.getHours() < 12) ? "" : (today.getHours() < 18) ? "" : (today.getHours() < 22) ? "" : "";
+const period = (today.getHours() < 12) ? "صباحًا" : (today.getHours() < 18) ? " " : (today.getHours() < 22) ? "مساءً" : "ليلاً";
 
-document.getElementById("date").innerHTML = `${gregorianDate} م  الموافق ل ${hijriDate}`;
+document.getElementById("date").innerHTML = `${gregorianDate} م الموافق ل ${hijriDate}`;
 document.getElementById("time").innerHTML = `${time}${period}`;
 
     
@@ -196,7 +181,9 @@ document.getElementById("speak-button").addEventListener("click", () => {
   speech.lang = "ar-MA";
   const hours = today.getHours() % 12 || 12; // تحويل الساعات إلى النظام العشري
   const minutes = today.getMinutes();
-   const periodLabel = (today.getHours() < 12) ? "صباحًا" : (today.getHours() < 18) ? "بَعْدَ الزَّوَالْ" : (today.getHours() < 22) ? "مساءً" : "ليلاً";
+  const periodLabel = (today.getHours() < 12) ? "صباحًا" : (today.getHours() < 18) ? "بَعْدَ الزَّوَالْ" : (today.getHours() < 22) ? "مساءً" : "ليلاً";
+  
+  
   
   // دالة لنطق الساعات
   function pronounceHour(number) {
@@ -208,17 +195,21 @@ document.getElementById("speak-button").addEventListener("click", () => {
     }
   }
 
-  
-// دالة لنطق الدقائق
- function pronounceMinute(number) {
-  const arabicNumbers = [" صِفْرٌ " , " وَاحِد " , " اِثْنَانِ " , " ثَلَاثَةْ " , " أَرْبَعَةْ " , " خَمْسَةْ " , " سِتَّةْ " , " سَبْعَةْ " , " ثَمَانِيَةْ " , " تِسْعَةْ " , " عَشْرَةْ " , " إِحْدَى عَشَرَ " , " اِثْنَا عَشْرَ " , " ثَلَاثَةَ عَشْرَ " , " أَرْبَعَةَ عَشْرَ " , " خَمْسَةَ عَشْرَ " , " سِتَّةَ عَشْرَ " , " سَبْعَةَ عَشْرَ " , " ثَمَانِيَةَ عَشْرَ " , " تِسْعَةَ عَشَرَ " , " عِشْرُونَ " , " وَاحِد وَعِشْرُونَ " , " اِثْنَانِ وَعِشْرُونَ " , " ثَلَاثَةٌ وَعِشْرُونَ " , " أَرْبَعَةُ وَعِشْرُونَ " , " خَمْسَةٌ وَعِشْرُونَ " , " سِتَّةٌ وَعِشْرُونَ " , " سَبْعَةٌ وَعِشْرُونَ " , " ثَمَانِيَةٌ وَعِشْرُونَ " , " تِسْعَةٌ وَعِشْرُونَ " , " ثَلَاثُونَ " , " وَاحِدٌ وَثَلَاثُونَ " , " اِثْنَانِ وَثَلَاثُونَ " , " ثَلَاثَةٌ وَثَلَاثُونَ " , " أَرْبَعَةٌ وَثَلَاثُونَ " , " خَمْسَةٌ وَثَلَاثُونَ " , " سِتَّةٌ وَثَلَاثُونَ " , " سَبْعَةٌ وَثَلَاثُونَ " , " ثَمَانِيَةٌ وَثَلَاثُونَ " , " تِسْعَةٌ وَثَلَاثُونَ " , " أَرْبَعُونَ " , " وَاحِدٌ وَأَرْبَعُونَ " , " اِثْنَانِ وَأَرْبَعُونَ " , " ثَلَاثَةٌ وَأَرْبَعُونَ " , " أَرْبَعَةٌ وَأَرْبَعُونَ " , " خَمْسَةٌ وَأَرْبَعُونَ " , " سِتَّةٌ وَأَرْبَعُونَ " , " سَبْعَةٌ وَأَرْبَعُونَ " , " ثَمَانِيَةٌ وَأَرْبَعُونَ " , " تِسْعَةٌ وَأَرْبَعُونَ " , " خَمْسُونَ " , " وَاحِدٌ وَخَمْسُونَ " , " اِثْنَانِ وَخَمْسُونَ " , " ثَلَاثَةٌ وَخَمْسُونَ " , " أَرْبَعَةٌ وَخَمْسُونَ " , " خَمْسَةٌ وَخَمْسُونَ " , " سِتَّةٌ وَخَمْسُونَ " , " سَبْعَةٌ وَخَمْسُونَ " , " ثَمَانِيَةٌ وَخَمْسُونَ " , " تِسْعَةٌ وَخَمْسُونَ "];
+  // دالة لنطق الدقائق
+  function pronounceMinute(number) {
+    const arabicOnes = ["صفر", "واحد", "اثنان", "ثلاثة", "أربعة", "خمسة", "ستة", "سبعة", "ثمانية", "تسعة"];
+    const arabicTens = ["", "عشرة", "عشرون", "ثلاثون", "أربعون", "خمسون", "ستون", "سبعون", "ثمانون", "تسعون"];
 
-  if (number < 60) {
-    return arabicNumbers[number];
-  } else {
-    return "الرقم خارج النطاق";
+    if (number < 10) {
+      return arabicOnes[number];
+    } else if (number < 100) {
+      const ones = number % 10;
+      const tens = Math.floor(number / 10);
+      return (ones === 0) ? arabicTens[tens] : `${arabicOnes[ones]} و${arabicTens[tens]}`;
+    } else {
+      return "الرقم خارج النطاق";
+    }
   }
-}
 
   speech.text = `${pronounceHour(hours)} ${periodLabel} و ${pronounceMinute(minutes)} دَقِيقَةً`;
   speech.pitch = 1;
@@ -256,7 +247,7 @@ document.getElementById("speak-button").addEventListener("click", () => {
 
     // تحديث قيمة الوقت والفترة
     const timeElement = document.getElementById("time");
-    const periodLabel = (hr < 12) ? "" : (hr < 18) ? " " : (hr < 22) ? "" : "";
+    const periodLabel = (hr < 12) ? "صباحًا" : (hr < 18) ? " " : (hr < 22) ? "مساءً" : "ليلاً";
     timeElement.innerHTML = `${date.toLocaleTimeString("ar-MA")} ${periodLabel}`;
 }
 
@@ -279,22 +270,17 @@ var interval = setInterval(runTheClock, 1000);
         img.style.display = "none";
       });
 
-     // Determine which image to show based on the current hour
-      if (hour >= 6 && hour < 10) {
+      // Determine which image to show based on the current hour
+      if (hour >= 0 && hour < 6) {
         document.getElementById("image-1").style.display = "block";
-      } else if (hour >= 10 && hour < 14) {
+      } else if (hour >= 6 && hour < 12) {
         document.getElementById("image-2").style.display = "block";
-      } else if (hour >= 14 && hour < 18) {
+      } else if (hour >= 12 && hour < 18) {
         document.getElementById("image-3").style.display = "block";
-      } else if (hour >= 18 && hour < 22) {
-        document.getElementById("image-4").style.display = "block";
-      } else if (hour >= 22 && hour < 02) {
-        document.getElementById("image-5").style.display = "block";
       } else {
-        document.getElementById("image-6").style.display = "block";
+        document.getElementById("image-4").style.display = "block";
       }
     }
-
 
     // Existing clock update code...
 
