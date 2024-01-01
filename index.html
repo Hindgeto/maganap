@@ -157,7 +157,8 @@
   <div id="time"></div>
   
   <button id="speak-button">استمع للتوقيت</button>
-  
+      <!-- Button to open index2.html -->
+    <button id="open-index2-button">الساعة 2</button>
 </div>
   
 
@@ -303,6 +304,13 @@ var interval = setInterval(runTheClock, 1000);
 
     // Update the image every minute
     setInterval(updateImage, 60000);
+
+
+ // Add event listener to the button to open index2.html
+    document.getElementById("open-index2-button").addEventListener("click", function() {
+      window.location.href = "index2.html";
+    });
+    
   </script>
 </body>
 </html>
