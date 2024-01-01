@@ -1,294 +1,255 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Alexandria&display=swap" rel="stylesheet">
-  
-  
-  <title>التاريخ والساعة بالمغرب</title>
-  <style>
-    body {
-      font-family: 'Alexandria', sans-serif;
-      text-align: center;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      height: 90vh;
-      margin: 0;
-      background-color: #f0f0f0;
-    }
+<title>وقفة</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-    .container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      max-width: 80%;
-      max-height: 80vh;
-    }
 
-    #date {
-      font-size: 20px;
-      font-weight: bold;
-      margin-top: 10px;
-    }
 
-    .clockbox {
-      width: 50%;
-      max-width: 600px;
-    }
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Alexandria&display=swap" rel="stylesheet">
 
-    /* Clock styles */
-    .circle {
-      fill: none;
-      stroke: #000;
-      stroke-width: 9;
-      stroke-miterlimit: 10;
-    }
 
-    .mid-circle {
-      fill: #000;
-    }
 
-    .hour-marks {
-      fill: none;
-      stroke: #000;
-      stroke-width: 9;
-      stroke-miterlimit: 10;
-    }
+<style>
 
-    .hour-arm {
-      fill: none;
-      stroke: #000;
-      stroke-width: 17;
-      stroke-miterlimit: 10;
-    }
+h1,h2,h3,h4,h5,h6 {font-family: 'Alexandria', sans-serif;}
 
-    .minute-arm {
-      fill: none;
-      stroke: #000;
-      stroke-width: 11;
-      stroke-miterlimit: 10;
-    }
 
-    .second-arm {
-      fill: none;
-      stroke: #f00;
-      stroke-width: 4;
-      stroke-miterlimit: 10;
-    }
+h3 {font-size: 20px;;}
 
-    .sizing-box {
-      fill: none;
-    }
+   .form-select {
+            margin-bottom: 20px;
+            margin-top: 10px;
+            width: 250px;
+            text-align: center;
+            height: 35px;
+            border-radius: 20px;
+            width: 90%;
+        }
 
-    #hour,
-    #minute,
-    #second {
-      transform-origin: 50% 50%;
-    }
 
-    #time {
-      font-size: 48px;
-      font-weight: bold;
-      margin-top: 20px;
-    }
 
-    #speak-button {
-      font-family: 'Alexandria', sans-serif;
-      font-size: 24px;
-      font-weight: bold;
-      margin-top: 20px;
-      padding: 10px 20px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      cursor: pointer;
-      background: red;
-      color: white;
-      width: 300px;
-    }
-       #image-slider{
-      height: 50px;
-      padding-top: 10px;
-    }
-  </style>
-</head>
-<body>
+.w3-row-padding img {margin-bottom: 12px}
+/* Set the width of the sidebar to 120px */
+.w3-sidebar {width: 120px;background: #222;}
+/* Add a left margin to the "page content" that matches the width of the sidebar (120px) */
 
-<div class="container" dir="rtl">
-  <div id="date"></div>
+/*#main {margin-left: 120px}*/
 
-  <div class="clockbox">
-    <svg id="clock" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 600 600">
-      <circle class="circle" cx="300" cy="300" r="253.9"/>
-      <path class="hour-marks" d="M300.5 94V61M506 300.5h32M300.5 506v33M94 300.5H60M411.3 107.8l7.9-13.8M493 190.2l13-7.4M492.1 411.4l16.5 9.5M411 492.3l8.9 15.3M189 492.3l-9.2 15.9M107.7 411L93 419.5M107.5 189.3l-17.1-9.9M188.1 108.2l-9-15.6"/>
-      <circle class="mid-circle" cx="300" cy="300" r="16.2"/>
-      <g id="hour">
-        <path class="hour-arm" d="M300.5 298V142"/>
-        <circle class="sizing-box" cx="300" cy="300" r="253.9"/>
-      </g>
-      <g id="minute">
-        <path class="minute-arm" d="M300.5 298V67"/>
-        <circle class="sizing-box" cx="300" cy="300" r="253.9"/>
-      </g>
-      <g id="second">
-        <path class="second-arm" d="M300.5 350V55"/>
-        <circle class="sizing-box" cx="300" cy="300" r="253.9"/>
-      </g>
-    </svg>
-  </div>
+/* Remove margins from "page content" on small screens */
+@media only screen and (max-width: 600px) {#main {margin-left: 0}}
 
-  <div id="time"></div>
-  <button id="speak-button">استمع للتوقيت</button>
-</div>
-  
-  
-  
-  
-   <!-- Image Slider -->
-    <div id="image-slider">
-      <img id="image-1" src="https://www.kasandbox.org/programming-images/avatars/spunky-sam.png" alt="Image 1">
-      <img id="image-2" src="https://www.kasandbox.org/programming-images/avatars/purple-pi.png" alt="Image 2">
-      <img id="image-3" src="https://www.kasandbox.org/programming-images/avatars/primosaur-ultimate.png" alt="Image 3">
-      <img id="image-4" src="https://www.kasandbox.org/programming-images/avatars/old-spice-man.png" alt="Image 4">
-    </div>
-  
-  
-  
-  
-  <script>
-const today = new Date();
-const gregorianDate = today.toLocaleDateString("ar-MA", { weekday: "long", day: "numeric", month: "long", year: "numeric" });
-const hijriDate = today.toLocaleDateString("ar-MA-u-ca-islamic", { day: "numeric", month: "long", year: "numeric" });
-const hijriYear = today.toLocaleDateString("ar-MA-u-ca-islamic", { year: "numeric" });
-const time = today.toLocaleTimeString("ar-MA");
-const period = (today.getHours() < 12) ? "صباحًا" : (today.getHours() < 18) ? " " : (today.getHours() < 22) ? "مساءً" : "ليلاً";
 
-document.getElementById("date").innerHTML = `${gregorianDate} م الموافق ل ${hijriDate}`;
-document.getElementById("time").innerHTML = `${time}${period}`;
 
-    
- 
-    
-    
-document.getElementById("speak-button").addEventListener("click", () => {
-  const speech = new SpeechSynthesisUtterance();
-  speech.lang = "ar-MA";
-  const hours = today.getHours() % 12 || 12; // تحويل الساعات إلى النظام العشري
-  const minutes = today.getMinutes();
-  const periodLabel = (today.getHours() < 12) ? "صباحًا" : (today.getHours() < 18) ? "بَعْدَ الزَّوَالْ" : (today.getHours() < 22) ? "مساءً" : "ليلاً";
-  
-  
-  
-  // دالة لنطق الساعات
-  function pronounceHour(number) {
-    const arabicHours = [" ", " الواحِدَةُ ", " الثّانيَةُ ", " الثّالِثَةُ ", " الرّابِعَةُ ", " الخامِسَةُ ", " السّادِسَةُ ", " السّابِعَةُ ", " الثّامِنَةُ ", " التّاسِعَةُ ", " العاشِرَةُ ", " الحادِيَةَ عَشَرْ ", " الثّانِيَةَ عَشْرْ "];
-    if (number < 13) {
-      return `السّاعَةُ الَآنْ هِيَ ${arabicHours[number]}`;
-    } else {
-      return "الرقم خارج النطاق";
-    }
-  }
 
-  // دالة لنطق الدقائق
-  function pronounceMinute(number) {
-    const arabicOnes = ["صفر", "واحد", "اثنان", "ثلاثة", "أربعة", "خمسة", "ستة", "سبعة", "ثمانية", "تسعة"];
-    const arabicTens = ["", "عشرة", "عشرون", "ثلاثون", "أربعون", "خمسون", "ستون", "سبعون", "ثمانون", "تسعون"];
-
-    if (number < 10) {
-      return arabicOnes[number];
-    } else if (number < 100) {
-      const ones = number % 10;
-      const tens = Math.floor(number / 10);
-      return (ones === 0) ? arabicTens[tens] : `${arabicOnes[ones]} و${arabicTens[tens]}`;
-    } else {
-      return "الرقم خارج النطاق";
-    }
-  }
-
-  speech.text = `${pronounceHour(hours)} ${periodLabel} و ${pronounceMinute(minutes)} دَقِيقَةً`;
-  speech.pitch = 1;
-  speech.rate = 1;
-  speech.volume = 1;
-  window.speechSynthesis.speak(speech);
-});
-
-        const HOURHAND = document.querySelector("#hour");
-        const MINUTEHAND = document.querySelector("#minute");
-        const SECONDHAND = document.querySelector("#second");
-
-        var date = new Date();
-        let hr = date.getHours();
-        let min = date.getMinutes();
-        let sec = date.getSeconds();
-
-        let hrPosition = (hr * 360 / 12) + (min * (360 / 60) / 12);
-        let minPosition = (min * 360 / 60) + (sec * (360 / 60) / 60);
-        let secPosition = sec * 360 / 60;
-
-       function runTheClock() {
-    const date = new Date();
-    let hr = date.getHours();
-    let min = date.getMinutes();
-    let sec = date.getSeconds();
-
-    let hrPosition = (hr * 360 / 12) + (min * (360 / 60) / 12);
-    let minPosition = (min * 360 / 60) + (sec * (360 / 60) / 60);
-    let secPosition = sec * 360 / 60;
-
-    HOURHAND.style.transform = "rotate(" + hrPosition + "deg)";
-    MINUTEHAND.style.transform = "rotate(" + minPosition + "deg)";
-    SECONDHAND.style.transform = "rotate(" + secPosition + "deg)";
-
-    // تحديث قيمة الوقت والفترة
-    const timeElement = document.getElementById("time");
-    const periodLabel = (hr < 12) ? "صباحًا" : (hr < 18) ? " " : (hr < 22) ? "مساءً" : "ليلاً";
-    timeElement.innerHTML = `${date.toLocaleTimeString("ar-MA")} ${periodLabel}`;
+.w3-dark-grey, .w3-hover-dark-grey:hover, .w3-dark-gray, .w3-hover-dark-gray:hover {
+    color: #fff!important;
+    background-color: #1d6070!important;
 }
 
-var interval = setInterval(runTheClock, 1000);
+
+
+
+</style>
+</head>
+<body class="w3-black">
+
+<!-- Icon Bar (Sidebar - hidden on small screens) -->
+
+
+
+
+
+
+<!-- Navbar on small screens (Hidden on medium and large screens) -->
+
+
+<!-- Page Content -->
+<div style="margin-top: 20px;font-family: 'Alexandria', sans-serif;" class="w3-padding-large" id="main">
+  <!-- Header/Home -->
+
+
 
     
+    <!-- Grid for pricing tables -->
     
-    
-    
-    
-    
-// عرض الصور حسب الفترة النهارية
-    function updateImage() {
-      const hour = new Date().getHours();
-      const imageSlider = document.getElementById("image-slider");
-      const images = imageSlider.querySelectorAll("img");
+    <div class="w3-row-padding" style="margin:0 -16px;">
+      <div   class="w3-half w3-margin-bottom" style="float: right;">
+        <ul  style="border-radius: 20px;" class="w3-ul w3-white w3-center ">
+      
+      
+   
+          
+          <li class="w3-padding-16"><label for="chooseReciter" class="form-label">اختر القارئ</label><br>
+<select name="Category" class="form-select" aria-label="Default select example" id="chooseReciter" > </select></li>
+          
+          <li class="w3-padding-16"> <label for="chooseMoshaf" class="form-label">اختر الرواية</label><br>
+<select name="Price" class="form-select" aria-label="Default select example" id="chooseMoshaf" >
+</select></li>
+          
+          <li class="w3-padding-16"><label for="chooseSurah" class="form-label">اختر السورة</label><br>
+ <select name="Plan" class="form-select" aria-label="Default select example" id="chooseSurah" ></select></li>
+         
+         
+        </ul>
+      </div>
 
-      // Hiding all images
-      images.forEach(img => {
-        img.style.display = "none";
-      });
+      <div   class="w3-half">
+        <ul style="border-radius: 20px;" class="w3-ul w3-white w3-center  w3-hover-opacity-off">
+        
+          <li  style="border-radius: 20px;border-bottom-right-radius: 0px;
+    border-bottom-left-radius: 0px;" class="w3-dark-grey w3-xlarge w3-padding-22"><h3 style="font-family: 'Alexandria', sans-serif;" id="reciterName" style="">اختر القارئ</h3></li>
+          
+          <li class="w3-padding-16"><img id="reciterImage" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRNn_zR_OYYboY1MNHCN_USyEywF5csV7qpVIeKW76Z6N5SrTNEmS1dGGVMIRuVV2ZFeug&usqp=CAU" class="w3-margin w3-circle" alt="" style="width:50%"></li>
+          
+          
+          <li class="w3-padding-16">
+           <audio id="audioPlayer" controls autoplay muted style="width: 100%;">
+ <source src="" type="audio/ogg">
+ <source src="" type="audio/mpeg">
+ Your browser does not support the audio element.
+ </audio> 
+          </li>
+          
+        </ul>
+        
+         <!-- Footer -->
+ 
+    <p class="w3-medium" style="text-align: center;" >Powered by <a href="https://waqfaspace.blogspot.com/" target="_blank" class="w3-hover-text-green">waqfa</a></p>
+  <!-- End footer -->
+        
+      </div>
+    <!-- End Grid/Pricing tables -->
+    </div>
+    
+  
+  
+  
+  </div>
 
-      // Determine which image to show based on the current hour
-      if (hour >= 0 && hour < 6) {
-        document.getElementById("image-1").style.display = "block";
-      } else if (hour >= 6 && hour < 12) {
-        document.getElementById("image-2").style.display = "block";
-      } else if (hour >= 12 && hour < 18) {
-        document.getElementById("image-3").style.display = "block";
-      } else {
-        document.getElementById("image-4").style.display = "block";
-      }
+
+  
+   
+ 
+
+
+<script>
+const reciterImage = document.getElementById("reciterImage");
+const chooseReciter = document.getElementById("chooseReciter");
+const chooseMoshaf = document.querySelector('#chooseMoshaf');
+const chooseSurah = document.querySelector('#chooseSurah');
+const audioPlayer = document.querySelector('#audioPlayer');
+const apiUrl = 'https://mp3quran.net/api/v3';
+const language = 'ar';
+
+async function getReciters() {
+    try {
+        const res = await fetch(`${apiUrl}/reciters?language=${language}`);
+        const data = await res.json();
+
+        chooseReciter.innerHTML = `<option value="">اختر قارئ</option>`;
+
+        data.reciters.forEach(reciter => {
+            chooseReciter.innerHTML += `<option value="${reciter.id}">${reciter.name}</option>`;
+        });
+
+        chooseReciter.addEventListener('change', async (e) => {
+            const selectedReciterId = e.target.value;
+
+            // تحديث اسم القارئ في العنصر <h1>
+            const selectedReciter = data.reciters.find(reciter => reciter.id == selectedReciterId);
+            document.getElementById('reciterName').innerText = selectedReciter.name;
+
+            updateReciterImage(selectedReciterId);
+            getMoshaf(selectedReciterId);
+        });
+    } catch (error) {
+        console.error('Error fetching reciters:', error);
     }
+}
 
-    // Existing clock update code...
 
-    // Initial update
-    updateImage();
+async function updateReciterImage(reciter) {
+    try {
+        const imageUrl = `https://kimos998.github.io/Reciter/${reciter}.png`;
+        reciterImage.src = imageUrl;
+    } catch (error) {
+        console.error('Error updating reciter image:', error);
+    }
+}
 
-    // Update the image every minute
-    setInterval(updateImage, 60000);
+async function getMoshaf(reciter) {
+    try {
+        const res = await fetch(`${apiUrl}/reciters?language=${language}&reciter=${reciter}`);
+        const data = await res.json();
+        const moshafs = data.reciters[0].moshaf;
+
+        chooseMoshaf.innerHTML = `<option value="" data-server="" data-surahList="" >اختر رواية</option>`;
+
+        moshafs.forEach(moshaf => {
+            chooseMoshaf.innerHTML += `<option value="${moshaf.id}" data-server="${moshaf.server}" data-surahList="${moshaf.surah_list}" >${moshaf.name}</option>`;
+            
+        });
+
+        chooseMoshaf.addEventListener('change', e => {
+            const selectedMoshaf = chooseMoshaf.options[chooseMoshaf.selectedIndex];
+            const surahServer = selectedMoshaf.dataset.server;
+            const surahList = selectedMoshaf.dataset.surahlist;
+            getSurah(surahServer, surahList);
+        });
+    } catch (error) {
+        console.error('Error fetching moshaf:', error);
+    }
+}
+
+async function getSurah(surahServer, surahList) {
+    try {
+        const res = await fetch(`https://mp3quran.net/api/v3/suwar`);
+        const data = await res.json();
+        const surahNames = data.suwar;
+
+        surahList = surahList.split(',');
+
+        chooseSurah.innerHTML = `<option value="">اختر سورة</option>`;
+
+        surahList.forEach(surah => {
+            const padSurah = surah.padStart(3, '0');
+
+            surahNames.forEach(surahName => {
+                if (surahName.id == surah) {
+                    chooseSurah.innerHTML += `<option value="${surahServer}${padSurah}.mp3" >${surahName.name}</option>`;
+                }
+            });
+        });
+
+        chooseSurah.addEventListener('change', e => {
+            const selectedSurah = chooseSurah.options[chooseSurah.selectedIndex];
+            playSurah(selectedSurah.value);
+        });
+    } catch (error) {
+        console.error('Error fetching surahs:', error);
+    }
+}
+
+function playSurah(surahMp3) {
+    audioPlayer.src = surahMp3;
+    audioPlayer.play();
+}
+
+getReciters();
+
+
   </script>
+
+
+
+
+
 </body>
 </html>
